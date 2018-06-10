@@ -1,0 +1,35 @@
+while 조건부분:
+    수행부분
+    
+조건부분: 결과값으로 불린(True, False)이 나오는 식 
+         예) x > 1, name == "유재석"
+
+수행부분: 반복적으로 실행하고 싶은 명령들
+         예) print(name), x = x + 1
+ 
+조건부분이 true인 동안 계속 수행부분을 실행하는 반복문
+즉, 조건부분이 false가 나올 때 까지 계속 반복함.
+수행부분을 다른 코드와 비교하기 위해서 들여쓰기를 해줘야 한다.
+(Tab 키 또는 띄어쓰기 네개)
+
+i = 1
+while i는 3보다 작거나 같다:
+    print("I can code too!")
+    i의 값을 1 늘려준다
+    
+콘솔
+I can code too!
+I can code too!
+I can code too!
+
+i = 1
+
+while i <= 3:
+    print("I can code too!)
+    i += 1 or i = i + 1
+    
+
+coffee_count = 0
+while coffee_count는 3보다 작다:
+    네이버에 "유상무 잘생겼다"를 검색한다.
+    당첨되면 coffee_count의 값을 1 늘린다.
