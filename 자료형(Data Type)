@@ -112,3 +112,98 @@ print("1 나누기 3은 %d %(1.0/3) --> 0
 print("1 나누기 3은 %f %(1.0/3) --> 0.33333333333333
 소숫점 둘째 자리까지 반올림시킨 값을 얻고 싶을 때
 print("1 나누기 3은 %2f %(1.0/3) --> 0.33
+
+%d 정수(integer)
+%f 소수(Floating Point)
+%s 문자열(String)
+
+
+Boolean
+-George Boole --> 불 대수 (Boolean Algebra)
+명제: 참 또는 거짓이 확실한 문장
+
+x   y   x and y
+T   T      T
+T   F      F
+F   T      F
+F   F      F
+
+x   y    x or y
+T   T      T
+T   F      T
+F   T      T
+F   F      F
+
+X   Not x
+T     F
+F     T
+print(True)
+print(False)
+따옴표랑 사용하면 문자이다
+print(not Ture)
+print(Ture or False)
+
+print(2>1) T
+print(2<1) F
+print(3>=2) T
+print("Hello" == "Hello") True
+print(2>1 and "Hello" == "Hello") T
+print(not not True) not false = true
+print(not not False) not true = false
+print(7 == 7 or (4<3 and 12>10) )
+        T             F          == T
+x = 3
+print(x>4 or not (x <2 or x == 3)
+       F             F           == F
+       
+조건 연산 부호 (conditional operator)
+연산자     뜻
+  >       초과(greater than)
+  <       미만(less than)
+  >=      이상(greater than or equal to)
+  <=      이하(less than or equal to)
+  ==      같다(equal to)
+  !=      같지 않다(not equal to)
+  
+ Type 함수
+ print(type(1))
+ print(type(1.0))
+ print(type("1"))
+ print(type("True"))
+ print(type(True))
+ print(type(print)) --> 내장 함수 (class 'builtin_function_or_method')
+ 
+ section1-자료형 꿀팁 다시 정리하기
+ 
+ Floor Division( // 연산자는 나눗셈 연산 후 결과값을 내림 합니다. 즉 소수부분을 버리고 정수부분만 남겨두는 것)
+ x = int(5/2)
+ print(x)
+ 2
+ 
+ x = 5//2
+ print(x)
+ 2
+ 
+ / 와 //의 차이
+ print(7/4)     --> 1.75
+ print(int(7/4)) --> 1
+ print(7//4)    --> 1
+ 
+ 주의할 점은 소수형이 있을 경우 결과값이 소수형으로 나온다는 것.
+ print(5.0 // 2)  --> 2.0
+ print(5 // 2.0)  --> 2.0
+ print(5.0 // 2.0) --> 2.0
+ 
+ 반올림
+ round는 소수형을 반올림해줍니다.
+ print(round(1.421, 1)) # 1.421을 소수점 1째 자리로 반올림    1.4
+ print(round(2.7862, 2)) # 2.7862을 소수점 2째 자리로 반올림  2.79
+ print(round(3.141592, 4)) # 3.141592을 소수점 4째 자리로 반올림 3.1416
+ print(round(4.34)) # 4.34를 소수점 0번째 자리로 반올림 4
+ 
+ \n (Newline Character) 다음 줄 (키보드의 엔터키와 동일한 효과)
+ print("안녕하세요\n코드잇입니다\n여러분 모두를\n환영합니다")
+ 안녕하세요
+ 코드잇입니다
+ 여러분 모두를
+ 
