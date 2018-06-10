@@ -1,0 +1,114 @@
+
+               -- 정수 (integer): -3, -2, -1, 0 1,2,3
+숫자(number) --  
+               -- 소수 (Floating Point): 3.14, -7.3, 2.0
+               
+문자(string) "Hello", "World", "2"
+             "HellO" + "World" --> "HelloWorld"
+             "2" + "5" --> "25"
+
+불린(Boolean)    True, False
+
+
+숫자열
+# 덧셈
+print(4 + 7) 
+
+# 뺄샘
+print(2 - 4)
+
+#곱셈
+print(5 * 3)
+
+#나머지
+print(7 % 3)
+
+#거듭제곱
+print(2 ** 3)
+
+# 덧셈
+print(4.0 + 7.0) 소수형 + 소수형 = 소수형 11.0 
+
+# 뺄샘
+print(5 * 3.0) 소수형 + 정수형 = 소수형 15.0                
+
+소수형 > 정수형
+
+예외)
+print(7 / 2) --> 3.5    정수형/정수형 = 소수형
+print(7.0 / 3) --> 3.5  소수형/정수형 = 소수형
+print(6.0 / 2/0) --> 3.0 소수형/소수형 = 소수형
+(나중에 형변환을 배우면 정수형으로 바꿀 수 있다)
+
+print(2 + 3 * 2) --> 8
+print(2 * (2 + 3)) --> 10
+
+
+파이썬에는 숫자형(정수형과 소수형), 문자열, 불린, 리스트, 사전, 튜플 등 다양한 자료형들이 있다.
++ 덧셈 (addition)
+- 뺄샘 (substraction)
+* 곱셈 (multiplication)
+/ 나눗셈 (division)
+% 나머지 (modulo)
+** 거듭제곱 (exponentiation)
+
+
+문자열 (string)
+#문자열 (string) = 키보드로 입력할 수 있는 글자들을 표현하는 자료형
+ex) '코드잇' , "코드잇" (시작한 걸로 끝내야 함) 
+
+문자열 연결 (String Concatenation)
+"Hello" + 'World' --> "HelloWorld"
+
+"Hello" *3 --> "HelloHelloHello"
+
+(o)print("I'm excited to learn python!")
+(x)print('I'm excited to learn python!')
+
+print("Hello" + "World") -->"HelloWorld"
+print("Hello"*3)  --> "HelloHelloHello"
+
+print(3+5)  --> 8
+print("3" + "5") --> "35"
+
+
+형변환 (Type Conversion / Type Casting)
+print(int(3.8)) --> 3
+#int --> integer (정수)
+
+print(float(3)) --> 3.0
+#float --> floating Point(소수)
+
+#문자열 --> 숫ㅈ형
+print(int("2") + int("5")) == print(2+5) --> 7
+print(float("1.1") + float("2.5")) #print(1.1+2.5)
+print(str(2) + str(5) ) == print("2" + "5") --> "25"
+
+print("제 나이는 " + 7 + "살입니다. " ) --> error: cannot concatenate 'str' and 'int' objects, in order to fix it
+print("제 나이는 " + str(7) + "살입니다.") --> 제 나이는 7살입니다.
+
+#주의!!
+print(int("Hello World")) --> 논리적으로 형변환 자체가 불가함
+
+나눗셈은 무조건 소수형
+
+-문자열 포맷팅(String Formatting)
+year = 2016
+month = 1
+day = 16
+day_of_week = "일"
+
+print("오늘은 + str(year) + "년 " + str(month) + "월 " + str(day) + "일 " + day_of_week + "요일입니다.")
+- 너무 코드가 길어지고 구질구질함, 이러한 문제점을 고치기 위해
+print("오늘은 %d년 %d월 %d일 %s요일입니다. " %(year, month, day, day_of_week) )
+정수 -> 문자 %d = (decimal integar)     문자열은 %s
+
+print("오늘은 %d년 %d월 %d일 %s요일입니다. " %(year, month, day + 1, "월") )
+--> 오늘은 2016년 1월 17일 월요일 입니다.
+
+print(1.0/3) --> 0.3333
+print("1 나누기 3은 %d %(1.0/3) --> 0
+소숫점을 유지하고 싶으면
+print("1 나누기 3은 %f %(1.0/3) --> 0.33333333333333
+소숫점 둘째 자리까지 반올림시킨 값을 얻고 싶을 때
+print("1 나누기 3은 %2f %(1.0/3) --> 0.33
