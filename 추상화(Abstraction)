@@ -168,7 +168,10 @@ SyntaxError: non-default argument follows default argument
 
 
 
+multiplication = i * j
+print("%d * %d = %d" % (i, j, multiplication)
 
+= print("%d * %d = %d" % (i, j, i*j)
 
 
 
