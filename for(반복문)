@@ -131,12 +131,81 @@ print(y)
 
 
 
+리스트와 문자열
+
+alphabets_list = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+print(alphabets_list[0])      A
+print(alphabets_list[1])      B
+print(alphabets_list[4])      E
+print(alphabets_list[-1])     J
+
+문자열 또한 indexing이 가능하다
 
 
+alphabets_list = ['ABCDEFGHIJK']
+print(alphabets_list[0])      A
+print(alphabets_list[1])      B
+print(alphabets_list[4])      E
+print(alphabets_list[-1])     K
 
 
+list-slicing
+alphabets_list = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+print(alphabets_list[0:5])     ['A','B','C','D','E'] 
+print(alphabets_list[4:])      ['E', 'F', 'G', 'H', 'I', 'J']  
+print(alphabets_list[:4])      ['A', 'B', 'C', 'D']      
 
 
+alphabets_list = ['ABCDEFGHIJK']
+print(alphabets_list[0:5])     ['ABCDE'] 
+print(alphabets_list[4:])      ['EFGHIJ']  
+print(alphabets_list[:4])      ['ABCD']      
+
+
+list1 = [1,2,3,4]
+list2 = [5,6,7,8]
+list3 = list1 + list2
+print(list3)
+[1, 2, 3, 4, 5, 6, 7, 8]
+
+print(len("Hello, World!"))
+13
+
+numbers = [1,2,3,4]
+numbers[0] = 5
+print(numbers)
+[5, 2, 3, 4]
+
+하지만, 문자열 str 은 list와 달리 변경이 불가능하다.
+name = "codeit"
+name[0] = "C"
+print(name)
+
+TypeError: 'str' object does not support item assignment
+
+name = "code" + "it"
+print(name)
+codeit 이거는 문자를 변경하는 것과 달리 새로운 문자를 만드는 것 이다.
+
+Mutable (수정 가능) vs. Immutable (수정 불가능)
+하지만 차이점이 있습니다. 리스트는 데이터를 바꿀 수 있지만, 문자열은 데이터를 바꿀 수 없다는 것입니다. 리스트와 같이 수정 가능한 자료형을 'mutable'한 자료형이라고 부르고, 문자열과 같이 수정 불가능한 자료형을 'immutable'한 자료형이라고 부릅니다. 숫자, 불린, 문자열은 모두 immutable한 자료형입니다.
+
+# 리스트 데이터 바꾸기
+numbers = [1, 2, 3, 4]
+numbers[0] = 5
+print(numbers)
+[5, 2, 3, 4]
+리스트 numbers의 인덱스 0에 5를 새롭게 지정해주었습니다. [5, 2, 3, 4]가 출력되었습니다. 이처럼 리스트는 데이터의 생성, 삭제, 수정이 가능합니다.
+
+# 문자열 데이터 바꾸기
+name = "codeit"
+name[0] = "C"
+print(name)
+Traceback (most recent call last):
+  File "untitled.py", line 3, in <module>
+    name[0] = "C"
+TypeError: 'str' object does not support item assignment
+문자열 name의 인덱스 0 에 "C"를 새롭게 지정해주었더니 오류가 나왔습니다. TypeError: 'str' object does not support item assignment는 문자열은 변형이 불가능하다는 메시지입니다. 이처럼 문자열은 리스트와 달리 데이터의 생성, 삭제, 수정이 불가능합니다.
 
 
 
