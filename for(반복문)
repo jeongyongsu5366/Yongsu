@@ -51,3 +51,15 @@ range 장점
 1. 간편함
 2. 깔끔함
 3. 메모리 효율성
+
+
+
+numbers = [2, 4, 6, 8, 10, 12, 14, 16]
+
+for i in range(len(numbers)):
+    print(i, numbers[i])
+ 
+or
+
+for i in numbers:
+    print(numbers.index(i), i)
