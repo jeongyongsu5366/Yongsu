@@ -1,0 +1,183 @@
+파이썬에 이미 있는 자료형을 써도 되고...
+integer 4
+Floating Point 3.14
+Boolean True
+String "Hello World!"
+List [2, 3, 5, 7, 9]
+
+내가 자료형을 만들어 써도 됩니다!
+user
+card
+album
+assignment
+house
+monster
+weapon
+song
+student
+....
+
+class
+-자료형에 대한 설명서
+-자료형의 틀
+
+- 이 자료형은 어떻게 생성하는가?
+- 이 자료형은 어떤 정보들을 보관하는가?
+- 이 자료형에는 어떤 연산들과 함수들을 쓸 수 있는가?
+
+list = [2, 3, 5, 7, 11]        이 자료형은 어떻게 생성하는가?
+print(list1[2])                이 자료형은 어떤 정보들을 보관하는가?  요소들값, 요소 개수
+list1.append(13)               이 자료형에는 어떤 연산자들과 함수들을 쓸 수 있는가? append,insert       
+print(str(list1))              이 자료형은 콘솔에 어떻게 출력되는가?
+
+def square(x):
+  return x * x
+
+print(type(1))                 <class 'int'>
+print(type("Hello, World!"))   <class 'str'> 
+print(type(False))             <class 'bool'>
+print(type([1, 2, 3]))          <class 'list'>
+print(type(square))             <class 'function'>
+print(type(print))              <class 'builtin_function_or_method'> (내장함수)
+
+
+
+
+user자료형 만들기
+
+class User:
+    pass
+
+user1 = User()
+print(type(user1)
+<class '__main__.User'>
+여기서 main은 실행한 파일에 정의되어있는 user class의 값
+
+user.py
+class User:
+    pass
+    
+object_orinented.py
+from user import User
+
+user1 = User()
+print(type(user1))
+<class 'user.User'>
+user파일의 User 클래스를 의미한다.
+User라는 자료형을 성공적으로 만들었다.
+
+
+
+인스턴스
+class User:
+    pass
+
+user1 = User()
+user2 = User()
+print(user1 == user2)
+
+x = [2, 3, 5, 7, 11]                     [2, 3, 5, 7, 11] 여기에 x라는 이름표가 붙어있고
+y = x                                    리스트 class에 저장된 이 값을 인스턴스라고 부른다(instance)
+y[2] = 4                                 y라는 이름표도 여기에 달리게 됨 
+print(x == y)
+True
+
+x = [2, 3, 5, 7, 11]                     [2, 3, 5, 7, 11] 여기에 x라는 이름표가 붙어있고
+y = [2, 3, 5, 7, 11]                     리스트 class에 저장된 이 값을 인스턴스라고 부른다(instance)
+y[2] = 4                                 [2, 3, 5, 7, 11] y라는 이름표는 다른 메모리의 값의 2,3,5,7,9에 달리게 됨 
+print(x == y)                            이 값은 리스트의 class의 또 다른 인스턴스(instance)
+False (두 변수가 다른 instance를 가지고 있어서)
+
+x = User()                           유저라는 클래스에 x, y 라는 이름표가 붙는다
+y = x
+print(x == y) 
+True
+
+x = User()                          유저라는 클래스에 x 라는 이름표
+y = User()                          또 다른 유저라는 클래스에 y 라는 이름표
+print(x == y)
+False                               다른 메모리 주소에 있는 다른 인스턴스라서
+
+일단 이해하신대로 list1과 list2는 다른 메모리 주소를 가리키고 있는 서로 다른 인스턴스입니다. 그런데 왜 list1 == list2의 결과값으로 True가 나오는지 궁금하신거죠?
+
+값 더하기
+3 + 5를 하면 8이 나오고, [1, 2, 3] + [1, 3, 5]를 하면 [1, 2, 3, 1, 3, 5]가 나오고, "hello" + "world"를 하면 "helloworld"가 나오는 이유는 무엇일까요? 그냥 컴퓨터가 저절로 알아서 +를 이해하고 각 경우에 따라서 맞는 방식으로 더하는 것일까요?
+
+사실은 각 class에 +를 어떻게 쓸지 정의해 놓았기 때문에 저런 결과값들이 나오는 것입니다.
+
+class SomeClass:
+    def __init__(self, x):
+        self.attr1 = x
+
+ex1 = SomeClass(5)
+ex2 = SomeClass(3)
+print(ex1 + ex2)
+파이썬은 SomeClass의 두 값을 더하는 방법을 모르기 때문에 오류가 나옵니다.
+
+TypeError: unsupported operand type(s) for +: 'SomeClass' and 'SomeClass'
+이 문제를 고치기 위해서 +를 쓰는 방법을 설명해주는 __add__ 메소드를 정의해야합니다.
+
+class SomeClass:
+    def __init__(self, x):
+        self.attr1 = x
+
+    def __add__(self, other):
+        return self.attr1 + other.attr1
+
+ex1 = SomeClass(5)
+ex2 = SomeClass(3)
+print(ex1 + ex2)
+ex1 + ex2는 ex1.__add__(ex2)와 같습니다. 따라서 ex1.attr1 + ex2.attr1의 결과값인 8이 나오겠죠.
+
+8
+값 비교하기
+마찬가지로 ==도 어떤 결과값을 낼지 각 class에 정의를 할 수 있습니다. 리스트의 경우에는 순서대로 모두 같은 값을 보관하고 있으면 True가 나옵니다.
+
+그러면 이 경우에는 어떻게 나올까요?
+
+class SomeClass:
+    def __init__(self, x):
+        self.attr1 = x
+
+ex1 = SomeClass(5)
+ex2 = SomeClass(5)
+print(ex1 == ex2)
+False
+==가 어떻게 쓰여야하는지 정의해주지 않으면, 두 자료형이 같은 인스턴스면 True, 아니면 False가 나옵니다. ex1과 ex2는 다른 인스턴스이기 때문에 False가 나옵니다. ==가 어떻게 쓰이는지 설정하기 위해서는 __eq__ 메소드를 쓰면 됩니다.
+
+class SomeClass:
+    def __init__(self, x):
+        self.attr1 = x
+
+    def __eq__(self, other):
+        return self.attr1 == other.attr1
+
+ex1 = SomeClass(5)
+ex2 = SomeClass(5)
+print(ex1 == ex2)
+ex1 == ex2는 ex1.__eq__(ex2)와 같습니다. 따라서 ex1.attr1 == ex2.attr1의 결과값인 True가 나오겠죠.
+
+같은 인스턴스인지 확인하기
+==를 떠나서 두 값이 같은 인스턴스인지, 즉 두 값이 같은 메모리 주소를 가리키고 있는지 확인하는 방법이 있습니다.
+
+class SomeClass:
+    def __init__(self, x):
+        self.attr1 = x
+
+    def __eq__(self, other):
+        return self.attr1 == other.attr1
+
+ex1 = SomeClass(5)
+ex2 = SomeClass(5)
+print(ex1 is ex2)
+
+list1 = [2, 3, 4, 5]
+list2 = [2, 3, 4, 5]
+print(list1 is list2)
+이렇게 is를 쓰면 두 값이 같은 인스턴스인지 아닌지 확인할 수 있습니다.
+
+False
+False
+
+
+
