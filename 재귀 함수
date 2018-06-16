@@ -1,0 +1,146 @@
+재귀 함수 (Recursion): 자기 자신을 호출하는 함수
+
+ex) 꿈 속에서 꿈을 꾸고, 또 꿈 속의 꿈 속에서 꿈을 꾸고, 또 꿈 속의 꿈속의 꿈 속에서 꿈을 꾸고 keep going
+
+# 정수 n부터 1까지 출력
+def conutdown(n):
+    if n > 0:
+        print(n)
+        countdown(n - 1)
+ 
+countdown(4)
+
+1. countdown의 parameter n이 4
+2.  4
+    3
+    2
+    1 
+    이 출력
+3. 코드를 보면 반복문은 없고 countdown의 정의에 의해서 반복됨
+4. countdown 정의 내에서 countdown 함수를 호출함
+
+
+
+
+순서                                          콘솔
+def conutdown(n):
+    if n > 0:
+        print(n)
+        countdown(n - 1)
+ 
+countdown(4)                                    4
+if 4 > 0:
+   print(4)
+   countdown(4 - 1)
+|
+v
+countdown(3)                                    3
+if 3 > 0:
+  print(3)
+  countdown(3 - 1)
+|
+v
+countdown(2)                                     2
+if 2 > 0:
+  print(2)
+  countdown(2 - 1)
+|
+v
+countdown(1)                                     1
+if 1 > 0:
+  print(1)
+  countdown(1 - 1)
+|
+v
+countdown(0)                                     0
+if 0 > 0:
+  print(0)
+  countdown(0 - 1)
+  
+0 ~ 4 반대순으로 종료됨
+
+재귀 함수 설명 (팩토피얼)
+재귀적으로 문제를 푼다는 것은: 문제를 같은 형태의 더 작은 문제로 쪼개서 푸는 것입니다.
+n! (n 팩토리얼)
+n = 0인 경우 n! = 1
+n > 0인 경우 n! = 1 * ... * (n-2) * (n-1) * n
+0! = 1           3! = 1 * 2 * 3 = 6
+1! = 1           4! = 1 * 2 * 3 * 4 = 24
+2! = 1 * 2 = 2   5! = 1 * 2 * 3 * 4 * 5 = 120
+
+반복문을 써서 풀 수 있는 문제는 재귀 함수를 써서 풀 수 이쏙,
+재귀 함수를 써서 풀 수 있는 문제는 반복문을 써서 풀 수 있습니다.
+
+반복문을 쓰는 게 더 깔끔하거나 효율적일 때가 있고,
+재귀 함수를 쓰는 게 더 깔끔하거나 효율적일 때가 있습니다.
+
+재귀적으로 (재귀 함수를 써서) 문제를 풀기 위해서는
+문제를 더 작게 나눌 수 있도록 패턴을 찾아야 합니다! 
+
+5! = 1 * 2 * 3 * 4 * 5 = 120
+            4! = 1 * 2 * 3 * 4 = 24
+                     3! = 1 * 2 * 3 = 6
+                              2! = 1 * 2 = 2
+n! (n 팩토리얼)
+n = 0인 경우 n! = 1                    base case
+n > 0인 경우 n! = (n - 1)! * n         recursive case
+
+0! = 1              3! = 2! * 3 = 6 
+1! = 0! * 1         4! = 3! * 4 = 24
+2! = 1! * 2 = 2     5! = 4! * 5 = 120
+
+재귀 함수를 사용할 때는 both base and recursive case가 반드시 있어야함
+n = 0인 경우 n! = 1                    base case
+n > 0인 경우 n! = (n - 1)! * n         recursive case
+|
+v
+def factorial(n):
+  if n == 0:                                              if n == 0:
+      return 1                              ==                return 1
+  if n > 0:                                               return factorial(n - 1) * n
+      return factorial(n - 1) * n 
+
+
+def factorial(n):
+  if n == 0:
+      return 1
+  return factorial(n-1) * n
+
+print(factorial(4))
+|
+v
+factorial(4)
+if 4 == 0:                                    6 * 4: 6을 return
+    return 1
+return factorial(4 - 1) * 4
+|                                             ^
+v                                             |
+factorial(3)                                  
+if 3 == 0:                                    2 * 3
+    return 1
+return factorial(3 - 1) * 3
+|                                             ^ 
+v                                             |
+factorial(2)
+if 2 == 0:
+    return 1                                  1 * 2: 2를 return
+return factorial(2 - 1) * 2
+|                                             ^
+v                                             |
+factorial(1)
+if 1 == 0:
+    return 1                                   1 * 1
+return factorial(1 - 1) * 1
+|                                             ^     
+v                                             |
+factorial(0)                                   
+if 0 == 0:                                     1
+    return 1                                          
+return factorial(0 - 1) * 0
+
+
+
+
+
+
+ 
