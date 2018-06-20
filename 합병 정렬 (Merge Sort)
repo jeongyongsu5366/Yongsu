@@ -1,0 +1,48 @@
+- 합병 정렬(merge sort)은 재귀함수가 들어가는 정렬 알고리즘입니다.
+- 선택 정렬이나 삽입 정렬보다는 다소 어렵습니다. 
+- 하지만 대체로 선택 정렬이나 삽입 정렬보다 효율적입니다.
+
+합병 정렬을 하기 위해서는 2개의 함수 사용
+merge 함수 & merge_sort 함수
+
+merge 함수란?
+     0   1   2   3 
+list 6   11  13  16
+
+
+     0   1   2   3 
+list 1   4   7   10
+
+              0   1   2   3   4   5   6   7
+merged_list   1   4   6   7   10  11  13  16 
+
+분할 정복 (Divide and Conquer)
+: 문제를 같은 형태의 작은 문제로 분할해서 풀고 ,작은 문제들의 결과들을 합쳐서 본 문제의 답을 찾는 방식
+def f(x):
+   #base case
+   if f(x)가 간단하다:
+      f(X)를 직접 계산하여 리턴
+      
+   #recursive case
+   else:
+      x를 a, b로 분할
+      f(a)와 f(b) 계산
+      f(a), f(b)의 결과를 이용해서 f(x)의 답을 구하여 리턴
+      
+ 
+def merge_sort(some_list):
+   #base case
+   #리스트가 1개 이하의 요소, 이 말은 이미 정렬되었다는 말
+   if len(some_list) <= 1:
+      some_list를 리턴
+   
+   #recursive case
+   else:
+      some_list를 left, right로 분할
+      merge_sort(left)와 merge_sort(right)계산
+      merge_sort(left)와 merge_sort(right)의 결과를 merge해서 리턴
+      
+      
+  
+  
+   
