@@ -1,0 +1,997 @@
+// Log to console
+console.log('Hello World'); // Hello World
+
+var a = 0;
+let b = 0;
+
+console.log(a); // 0
+console.log(b); // 0
+
+for(let b = 0; b < 3; b++) {
+    console.log(b);               //result 0 , 1,  2,
+}
+
+console.log(b);     //0 
+// 비록 변수명은 a와 같지만 외부 변수에는 영향을 미치지 않는다
+// 변수명이랑 생가하지 말고 걍 block안에 제한되는 범위의 변수니까
+// 밖에랑 이름이 같던말던 block(braket{})범위를 벗어나면
+// 아예 다른거다.
+
+var a; //it is possible
+let b; //it is possible
+const c; //it is impossible
+
+//Let
+let name;
+name = 'John Doe';
+console.log(name); //John Doe
+name = 'Steve Smith'
+console.log(name); // Steve Smith 
+
+'use strict';
+var temp = "this is a temp variable";
+var temp = "this is a second temp variable"; //replaced easily
+We cannot do the same thing with let-
+
+'use strict';
+let temp = "this is a temp variable";
+let temp = "this is a second temp variable" //SyntaxError: temp is already declared
+// 요거는 안됨
+
+// CONST (can't be changed)
+const name = 'John';
+console.log(name);
+cannot reassign
+name = 'Sara'; Error
+// const greeting; // Error missing initializer in const declaration
+
+
+/*
+Primitive Data Types:
+Stored directly in the location the variable acceses stored on the stack
+오브젝트를 제외한 모든 값은 변경 불가능한 값 (immutable value) 이다. 
+예를 들자면, 특히 C 언어와는 다르게도, 문자열은 불변값 (immutable) 이다. 
+이런 값을 "primitive values" 라고 일컫는다. 아래의  Strings 장에서 더 자세히 설명할 것이다.
+Ex) string, number, boolean, null, undefined (not assigned variable), symbols (ES6)
+
+Reference Data Types/Objects:
+Accessed by reference
+Objects that are stored on the heap
+A pointer to a location in memory
+Ex) Arrays, Object Literals, Functions, Dates, Anything Else...
+
+Dynamically Typed Language
+- Types are associated with values not variables
+- The same variable can hold multiple types
+- We do not need to specify types
+- Most other languags are statically typed
+- There are supersets of JS and addons to allow static typing (TypeScript, Flow)
+
+https://codeburst.io/explaining-value-vs-reference-in-javascript-647a975e12a0
+
+*/
+
+// Primitive
+
+// String
+const name = 'John Doe';
+// Number
+const age = 45;
+// Boolean
+const haskids = true;
+// Null
+const car = null;
+// Undefined
+let test;
+// Symbol
+const sym = Symbol();
+
+console.log(typeof name); //string
+console.log(typeof age); // number
+console.log(typeof haskids); // boolean
+console.log(typeof car); // null
+//search for typeof null is object on google
+console.log(typeof test); //undefined
+console.log(typeof sym); //symbol
+
+// Reference Types - Objects
+// Array
+const hobbies = ['movies', 'music'];
+
+// Object Literal
+const address = {
+  city: 'Boston',
+  state: 'MA'
+}
+
+const today = new Date();
+
+console.log(typeof hobbies); //object
+console.log(typeof address); //object
+console.log(typeof today); //object
+
+
+//Type Conversion
+let val;
+
+//Number to string
+val = 5;
+
+//Output
+console.log(val);   //5
+console.log(typeof val); //number
+console.log(val.length); //undefined
+
+// Conversion
+val = String(5);
+console.log(val);   //5
+console.log(typeof val); //string
+console.log(val.length); //3
+
+val = String(4+4);
+console.log(val);   //8
+console.log(typeof val); //string
+console.log(val.length); //1
+
+val = String(true);
+console.log(val);   //true
+console.log(typeof val); //string
+console.log(val.length); //4
+
+val = String(new Date());
+console.log(val);   // Wed Nov 08 2017 15:43:21 
+console.log(typeof val); //string
+console.log(val.length); //57
+
+// Array to string
+val = String([1,2,3,4]);
+console.log(val);   // 1,2,3,4 
+console.log(typeof val); //string
+console.log(val.length); //7
+
+// toString()
+val = (5).toString();
+console.log(val);   // 5 
+console.log(typeof val); //string
+console.log(val.length); //1
+
+val = (true).toString();
+console.log(val);   // true 
+console.log(typeof val); //string
+console.log(val.length); //4
+
+//String to number
+val = '5';
+console.log(val);   // 5
+console.log(typeof val); //string
+// console.log(val.length); it only works for stirng
+console.log(val.toFixed()) // it only works for number, which is specified decimals
+// error
+
+val = Number('5');
+console.log(val);   // 5 
+console.log(typeof val); //number
+console.log(val.toFixed(2)); // 5.00
+
+val = Number(true);
+console.log(val);   // 1 
+console.log(typeof val); //number
+console.log(val.toFixed()); // 1
+
+val = Number(false);
+console.log(val);   // 0 
+console.log(typeof val); //number
+console.log(val.toFixed()); // 0
+
+val = Number(null);
+console.log(val);   // 0 
+console.log(typeof val); //number
+console.log(val.toFixed()); // 0
+
+val = Number('hello');
+console.log(val);   // NaN 
+console.log(typeof val); //number
+console.log(val.toFixed()); // NaN (Not a Number)
+
+val = Number([1,2,3]);
+console.log(val);   // NaN 
+console.log(typeof val); //number
+console.log(val.toFixed()); // NaN (Not a Number)
+
+val = parseInt('100.30');
+// parseInt is just an integer value
+console.log(val);   // 100 
+console.log(typeof val); //number
+console.log(val.toFixed()); // 100
+
+val = parseFloat('100.31');
+// if you want to use float value
+console.log(val);   // 100.31 
+console.log(typeof val); //number
+console.log(val.toFixed(2)); // 100.30
+
+const val1 = 5;
+const val2 = 6;
+const sum = val1 + val2;
+
+console.log(sum); // 1
+console.log(typeof sum); //number
+
+//------------------------------------
+const val1 = String(5);
+const val2 = 6;
+const sum = val1 + val2;
+
+console.log(sum); // 56
+console.log(typeof sum); //string
+// 만약에 하나는 string 하나는 number라면
+// number를 string으로 간주하고 계산한다
+
+
+// Numbers and The Math Object
+const num1 = 100;
+const num2 = 50;
+let val;
+
+// Simple math with numbers
+val = num1 + num2;
+val = num1 * num2;
+val = num1 - num2;
+val = num1 / num2;
+val = num1 % num2;
+
+// Math Object, property is an attribute
+val = Math.PI; //3.141592653589793
+val = Math.E; //2,71828182
+val = Math.round(2.8); // 3 반올림
+val = Math.ceil(2.4); // 3 올림
+val = Math.floor(2.5); //2
+val = Math.sqrt(64); // 8 root
+val = Math.abs(-3); // 3 absolute number
+val = Math.pow(8, 2); // 64 power
+val = Math.min(2,33,4,1,55,6,3); // 1
+val = Math.max(2,33,4,1,55,6,3); // 55
+val = Math.random(); //gives us a random number
+
+val = Math.random() * 20; // Random number with decimals
+val = Math.floor(Math.random() * + 1); // just integers
+
+
+-------------------------------------------------------------------------------------------------------------
+
+//String Methods and Concatenation
+const firstName = 'William';
+const lastName = 'Johnson';
+const age = 36;
+const str = 'Hello there my name is Brad';
+
+let val;
+
+val = firstName + lastName; //WilliamJohnson
+
+// Concatenation
+val = firstName + ' ' + lastName; // William Johnson
+
+// Append
+val = 'Brad ';
+val += 'Traversy'; //Brad Traversy
+
+val = 'Hello, my name is' + firstName + ' and I am' + age; //Hello, my name is William and I am 36
+
+// Escaping
+// val = 'That's awesome, I can't wait; This is wrong
+val = "That's awesome, I can't wait";
+val = 'That\'s awesome, I can\'t wait';
+
+// Length
+val = firstName.length; //7
+
+// Concat
+val = firstName.concat(' ', lastName);
+// William Johnson
+
+// Change case
+val = firstName.toUpperCase();
+val = firstName.toLowerCase();
+
+val = firstName[0]; // W
+val = firstName[2]; // l
+
+// indexOf()
+val = firstName.indexOf('l') //2
+val = lastName.indexOf('l') //3
+
+// charAt()
+val = firstName.charAt('2'); //l
+p
+// Get last char
+val = firstName.charAt(firstName.length - 1); //m
+
+// substring()
+val = firstName.substring(0, 4); // Will
+
+// slice()
+val = firstName.slice(0,4); // Will
+val = firstName.slice(-3); // iam
+
+// split()
+val = str.split(' ');
+
+// replace()
+val = str.replace('Brad', 'Jack');
+// Hello there my name is Jack
+
+// includes()
+val = str.includes('Hello'); // true
+val = str.includes('foo'); // false
+
+
+----------------------------------------------------------------------------------------------------------------
+////////////////////////////////////////////////
+// Template Literals
+const name ='John';
+const age = 30;
+const job = 'Web Developer';
+const city = 'Miami';
+let html; //initialize html
+
+// Without template strings (ES5) way
+
+html = '<ul><li>Name: ' + name + '</li><li>Age:' + age + '</li><li>' + job + '</li><li>City: ' + city + '</li></ul>';
+
+html = '<ul>' + 
+       '<li>Name: ' + name + '</li>' +
+       '<li>age: ' + age + '</li>' +
+       '<li>job: ' + job + '</li>' +
+       '<li>city: ' + city + '</li>' +
+       '</ul>';
+
+function hello() {
+  return 'hello';
+}
+
+// With template string (es6)
+// left to the number one key ``
+html = `
+  <ul>
+    <li>Name: ${name}</li>
+    <li>Age: ${age}</li>
+    <li>Job: ${job}</li>
+    <li>City: ${city}</li>
+    <li>${2 + 2}</li>
+    <li>${hello()}</li>
+    <li>${age > 30 ? 'Over 30' : 'Under 30'}</li>
+  </ul>
+`;
+
+document.body.innerHTML = html;
+
+//results
+/*
+  -Name: John
+  -Age: 30
+  -Job: Web Developer
+  -City: Miami
+  -4
+  -hello
+  -under 30
+*/
+
+
+--------------------------------------------------------------------------------------------------------------
+////////////////////////////////////////////////
+// Arrays and Array Methods
+
+// Create some arrays
+const numbers = [43,56,33,23,44,36,5];
+const numbers2 = new Array(22,25,33,76,54);
+// Both of these are array
+const fruit = ['Apple','Banana','Orange','Pear'];
+
+const mixed =[22, 'Hello', true, undefiend, null, {a:1, b:1}, new Date()];
+
+let val;
+
+console.log(numbers); // [43,56,33,23,44,36,5]
+console.log(val); // undefined
+
+// Get array length
+val = numbers.length;  // 7
+
+// Check if it is array
+val = Array.isArray('hello'); // false
+val = Array.isArray(numbers); // true
+
+// Get single value
+val = numbers[3]; // 23
+val = numbers[0]; // 43
+
+// Insert into array
+numbers[2] = 100;
+console.log(numbers); // [43,56,100,23,44,36,5]
+
+// Find index of value
+val = numbers.indexOf(36); // 5
+
+// Mutating Arrays
+// Add on to end
+numbers.push(250); // [43,56,100,23,44,36,5, 250]
+
+// Add on to front
+numbers.unshift(120);
+// [120,43,56,100,23,44,36,5,250]
+
+// Take off form end
+numbers.pop(); // 250
+// [120,43,56,100,23,44,36,5]
+
+// Take off from front
+numbers.shift(); //[43,56,100,23,44,36,5]
+
+// Splice values
+numbers.splice(1,1);
+// 1에서 1까지 제거
+//[43,100,23,44,36,5]
+
+numbers.splice(1,3);
+// 1 ~ 3  [43,44,36,5]
+
+//Reverse
+numbers.reverse();
+//[5,36,44,43]
+
+// Concatenate array
+val = numbers.concat[numbers2];
+
+// Sorting arrays
+val = fruit.sort(); //Alphabetical order
+val = numbers.sort(); //
+
+// Use the "compare function"
+val = numbers.sort(function(x,y){
+  return x - y;
+}); // 순서대로
+
+// Reverse sort
+val = numbers.sort(function(x,y){
+  return y - x;
+}); //역순으로
+
+//find
+function over50(num) {
+    return num > 50;
+}
+
+// const numbers = [43,56,33,23,44,36,5];
+val = numbers.find(over50);
+// 56
+
+// https://stackoverflow.com/questions/1063007/how-to-sort-an-array-of-integers-correctly
+-------------------------------------------------------------------------------------------------------------
+
+////////////////////////////////////////////////
+// Arrays and Array Methods
+
+// Create some arrays
+const numbers = [43,56,33,23,44,36,5];
+const numbers2 = new Array(22,25,33,76,54);
+// Both of these are array
+const fruit = ['Apple','Banana','Orange','Pear'];
+
+const mixed =[22, 'Hello', true, undefiend, null, {a:1, b:1}, new Date()];
+
+let val;
+
+console.log(numbers); // [43,56,33,23,44,36,5]
+console.log(val); // undefined
+
+// Get array length
+val = numbers.length;  // 7
+
+// Check if it is array
+val = Array.isArray('hello'); // false
+val = Array.isArray(numbers); // true
+
+// Get single value
+val = numbers[3]; // 23
+val = numbers[0]; // 43
+
+// Insert into array
+numbers[2] = 100;
+console.log(numbers); // [43,56,100,23,44,36,5]
+
+// Find index of value
+val = numbers.indexOf(36); // 5
+
+// Mutating Arrays
+// Add on to end
+numbers.push(250); // [43,56,100,23,44,36,5, 250]
+
+// Add on to front
+numbers.unshift(120);
+// [120,43,56,100,23,44,36,5,250]
+
+// Take off form end
+numbers.pop(); // 250
+// [120,43,56,100,23,44,36,5]
+
+// Take off from front
+numbers.shift(); //[43,56,100,23,44,36,5]
+
+// Splice values
+numbers.splice(1,1);
+// 1에서 1까지 제거
+//[43,100,23,44,36,5]
+
+numbers.splice(1,3);
+// 1 ~ 3  [43,44,36,5]
+
+//Reverse
+numbers.reverse();
+//[5,36,44,43]
+
+// Concatenate array
+val = numbers.concat[numbers2];
+
+// Sorting arrays
+val = fruit.sort(); //Alphabetical order
+val = numbers.sort(); //
+
+// Use the "compare function"
+val = numbers.sort(function(x,y){
+  return x - y;
+}); // 순서대로
+
+// Reverse sort
+val = numbers.sort(function(x,y){
+  return y - x;
+}); //역순으로
+
+//find
+function over50(num) {
+    return num > 50;
+}
+
+// const numbers = [43,56,33,23,44,36,5];
+val = numbers.find(over50);
+// 56
+
+// https://stackoverflow.com/questions/1063007/how-to-sort-an-array-of-integers-correctly
+
+-----------------------------------------------------------------------------------------------------
+///////////////////////////////////////////////
+// Date and Times
+let val;
+
+const today = new Date();
+const birthday = new Date('9-10-1981 11:25:00');
+                      //or September 10 1981
+                      //or 9/10/1981
+val = today;
+
+console.log(val); // Thu Nov 09 2017...
+console.log(typeof val); //object
+
+val = birthday; 
+console.log(val);
+// search for javascript date object
+
+val = today.getMonth(); //10 이거는 11월
+val = today.getDate(); // 9
+val = today.getDay(); // 4
+val = today.getFullYear(); // 2017
+val = today.getHours();
+val = today.getMinutes();
+val = today.getMilliseconds();
+val = today.getTime(); 
+
+birthday.setMonth(2); //March
+birthday.setDate(12); // March 12
+birthday.setFullYear(1985); // March 12 1985
+birthday.setHouts(3);
+birthday.setMinutes(30);
+birthday.setSeconds(25);
+
+////////////////////////////////////////////////
+// If statements and compariosn operator
+// if(something) {
+//   do something
+// } else {
+//   do something else
+// }
+
+const id = 100;
+
+// Equal to
+// if(id == 101) {
+//   console.log('CORRECT');
+// } else {
+//   console.log('INCORRECT');
+// }
+
+// // Not Equal to
+// if(id != 101) {
+//   console.log('CORRECT');
+// } else {
+//   console.log('INCORRECT');
+// }
+
+// // Equal to value & type
+// if(id === 100) {
+//   console.log('CORRECT');
+// } else {
+//   console.log('INCORRECT');
+// }
+
+// if(id !== 100) {
+//   console.log('CORRECT');
+// } else {
+//   console.log('INCORRECT');
+// }
+
+// //Test if undefined
+// if (typeof id !== undefined) {
+//   console.log(`The ID is ${id}`);
+// } else {
+//   console.log('No ID');
+// }
+
+// // Greater or Less Than
+// if(id => 200) {
+//   console.log('CORRECT');
+// } else {
+//   console.log('INCORRECT');
+// }
+
+// IF ELSE
+
+const color = 'yellow';
+
+// if (color === 'red') {
+//   console.log('Color is red');
+// } else if(color === 'blue') {
+//   console.log('Color is blue');
+// } else {
+//   console.log('Color is not red or blue');
+// }
+
+// Logical operator
+
+const name = 'Steve';
+const age = 20;
+
+if (age > 0 && age < 12) {
+  console.log(`${name} is a child`);
+} else if(age >= 13 && age <= 19) {
+  console.log(`${name} is a teenager`);
+} else {
+  console.log(`${name} is an adult`);
+}
+
+// or ||
+if (age < 16 || age > 65) {
+  console.log(`${name} can not run in race`);
+} else {
+  console.log(`${name} is registedrd for the race`);
+}
+
+// TERNARY Operator
+// IF THIS IS TRUE, OR NOT
+console.log(id === 100 ? 'CORRECT' : "INCORRECT");
+// CORRECT
+
+// Without Braces
+if(id === 100) 
+  console.log('CORRECT')
+else 
+  console.log('INCORRECT')
+  // NOT RECOMMENDED
+
+//Switch
+
+const color = 'red';
+
+switch(color) {
+  case 'red':
+    console.log('Color is red');
+    break;
+  case 'blue':
+    console.log('Color is blue');
+    break;
+  default:
+    console.log('Color is not red or blue')
+    break;
+}
+
+let day;
+
+switch(new Date().getDay()) {
+  case 0:
+   day = 'Sunday';
+   break;
+  case 1:
+   day = 'Monday';
+   break;
+  case 2:
+   day =' Tuesday';
+    break;    
+}
+
+console.log(`Today is ${day} `);
+
+
+/////////////////////////////////////////////////////////////
+// Function Declarations & Expressions
+function greet() {
+  //console.log('Hello');
+  return 'Hello';
+}
+
+console.log(greet()); //Hello
+
+function greet(firstName, lastName) {
+  return 'Hello' + firstName + ' ' + lastName;
+}
+
+console.log(greet()); //Hello undefined undefined
+console.log(greet('Steve', 'Doe'));
+
+// Function Expressions
+
+// it is same as function square 
+const square = function(x = 3) {
+  // x = 3 is default
+  return x*x;
+};
+
+console.log(square(8)); // 64
+console.log(square()); // 9
+
+-----------------------------------------------------------------------------------------------------------------
+
+// Immidiately Invokable Function Expressions - IIFEs
+
+(function(name) {
+  console.log('Hello ' + name);
+})('Brad'); //Hello Brad
+
+// Property Methods
+const todo = {
+  add: function() {
+    console.log('Add todo...');
+  },
+  edit: function (id) {
+    console.log(`Edit todo ${id}`);
+  }
+}
+
+todo.delete = function() {
+  console.log('Delete todo...');
+}
+
+todo.add();    // Add todo..
+todo.edit(22); // Edit todo 22
+todo.delete(); // Delete todo...
+
+https://medium.com/@vvkchandra/essential-javascript-mastering-immediately-invoked-function-expressions-67791338ddc6
+///////////////////////////////////////////////////////////
+// General Loops
+// For Loop
+
+for(let i = 0; i < 10; i++) {
+  // console.log('Number ' + i);
+  if(i === 2) {
+    console.log('2 is my favorite number');
+    continue;
+  }
+
+  if(i === 5) {
+    console.log('Stop the loop');
+    break;
+  }
+
+  console.log('Number ' + i);
+}
+
+
+// While Loop
+
+let j = 0;
+
+while(j < 10) {
+  console.log('Number ' + j);
+  j++;
+}
+
+// Do while
+
+let k = 0;
+
+do {
+  console.log('Number ' + k);
+  k++;
+  // No matter what it is running
+}
+
+while(k < 10);
+
+////////////////////////////////////////////////////////
+// Loop Through Array
+const cars = ['Ford', 'Chevy', 'Honda', 'Toyata'];
+
+for (let k = 0; k < cars.length; k++) {
+  console.log(cars[k]);
+}
+
+// For Each
+cars.forEach(function(car, index) {
+  console.log(`${index} : ${car}`);
+  console.log(array);
+});
+
+// Map
+const users = [
+  {id:1, name:'John'},
+  {id:2, name: 'Sara'},
+  {id:3, name: 'Karen'}
+];
+
+const ids = user.map(function(user){
+  return user.id;
+});
+
+console.log(ids); // [1,2,3]
+
+
+
+const user = {
+  firstName: 'John',
+  lastName: 'DOe',
+  age: 40
+}
+
+for(let x in user) {
+  console.log(x);
+}
+// firstName, lastName, age
+
+for(let x in user) {
+  console.log(`${x} : ${user[x]}`);
+}
+
+// firstName: John
+// lastName: DOe
+// age: 40;
+
+////////////////////////////////////////////////////////////
+
+// A Look At The Window Object
+https://stackoverflow.com/questions/9041666/whats-the-purpose-of-referencing-the-window-object-in-javascript
+window가 최상위에 있는에니까 globla variable 등을 주고 싶을 때 사용하기도 하고 여튼 유용함
+//console창에 window 라고 입력하면 다양한 object가 나옴
+// Window Methods / Objects / Properties
+
+console.log(123);
+
+// Alert
+//alert('Hello World')
+//window.alert('Hello World');
+
+// Prompt
+const input = prompt();
+alert(input);
+
+// Confirm (using when deleting something)
+if(confirm('Are you sure')) {
+  console.log('YES');
+} else {
+  console.log('NO');
+}
+
+// Properties
+
+let val;
+
+// Outter height and width
+val = window.outterHeight; //화면높이 constantly changed
+val = window.outterWidth; // 화면길이 constantly changed as moving it
+
+// Inner height and width
+val = window.innerHeight;
+// val = window.innerWidth;
+
+// Scroll Points
+val = window.scrollY;
+val = windwo.scrollX; //Horizontal Scroll
+
+// Location Object
+val = window.location;
+val = window.location.hostname;
+val = window.location.port;
+val = window.location.search;
+
+// Redirect
+window.location.href = 'http://google.com';
+//when reloading, google homepage occurs
+
+// Reload
+//window.location.reload();
+
+// History Object
+window.history.go(-1);
+// 뒤로가기 한 번
+window.history.go(-2);
+// 뒤로가기 두 번
+
+val = window.history.length;
+
+// Navigator Object
+val = window.navigator;
+val = window.navigator.appName;
+val = window.navigator.appVersion;
+val = window.navigator.userAgent;
+val = window.navigator.platform;
+val = window.navigator.vendor;
+val = windwo.navigator.language;
+
+
+console.log(val);
+
+
+
+////////////////////////////////////////////////////
+// Block Scope with let & const
+// Global Scope
+var a = 1;
+let b = 2;
+const c = 3;
+
+function test() {
+  var a = 4;
+  let b = 5;
+  const c = 6;
+  console.log('Function Scope: ', a, b, c);
+}
+
+test();
+// Function Scope 4 5 6
+
+console.log('Global Scope:', a,b, c);
+//Global Scope 1 2 3
+
+
+if(true) {
+  // Block Scope
+  var a = 4; // 요거는 변함
+  let b = 5; // 요거는 안변함 initialized declared
+  const c = 6; // initialized declared
+  
+  console.log('If Scope: ', a, b, c);
+}
+
+// If Scope: 4 5 6
+
+console.log('Global Scope: ', a, b, c);
+// Global Scope: 4 2 3
+
+
+for(let a = 0; a < 10; a++) {
+  console.log(`Loop: ${a}`);
+// 비록 변수명은 a와 같지만 외부 변수에는 영향을 미치지 않는다
+// 변수명이랑 생가하지 말고 걍 block안에 제한되는 범위의 변수니까
+// 밖에랑 이름이 같던말던 block(braket{})범위를 벗어나면
+// 아예 다른거다.
+}
+
+
+console.log('Global Scope: ', a, b, c);
+// Global Scope 1, 2, 3
+
+
+for(var a = 0; a < 10; a++) {
+  console.log(`Loop: ${a}`);
+}
+
+console.log('Global Scope: ', a, b, c);
+// Global Scope 10, 2, 3
+
