@@ -1,0 +1,373 @@
+let val;  // Initialize variable called val
+
+val = document; // It gives us entire docuement doucemnt is the highest                       in the tree
+val = document.all; // Looks like every factors in index.html as an                             array
+val = document.all[2]; // Gives us meta charset = "UTF-8"
+val = document.all.length; // We can find 43 elements in DOM
+val = document.head; // We can get head alone
+val = document.body; // We can get body alone
+val = document.doctype; // We can get doc type (!DOCTYPE html)
+val = document.domain;  // We can get the domain 
+val = document.URL; // We can get the URL
+val = document.characterSet; // We can get charset UTF-8
+val = document.contentType; // text/html
+
+// It is not recommended
+val = document.forms; // We can get the html collection 
+val = document.forms[0]; // #<form id="task-form">
+val = document.forms[0].id; //tast-form
+val = document.forms[0].method; // get
+val = document.forms[0].action; // there is no action, so, nothing appears
+
+val = document.links; // collection of links 
+val = document.links[0]; // We can access certain links
+val = document.links[0].id; //  There is no id
+val = document.links[0].className; //delete-item, secondary-content
+val = document.links[0].classList[0]; // 
+
+val = document.images;  // We don't have any image, so it is empty collection []
+
+val = document.scripts; // [script, script, script] we have three scripts
+val = document.scripts[2].getAttribute('src'); // app.js
+
+let scripts = document.scripts; // 
+
+let scriptsArr = Array.from(scripts);
+
+scriptsArr.forEach(function(script) {
+  console.log(script.getAttribute('src'));
+});   // forEach is an array only
+
+// In order to solve this problem
+let scriptsArr = Array.from(scripts);
+// we can make conversion on scripts
+scriptsArr.forEach(function(script) {
+  console.log(script.getAttribute('src'));
+});   // forEach is an array only
+
+console.log(val);
+
+
+--------------------------------------------------------------------------------------------------------
+
+// document.getElementById()
+
+console.log(document.getElementById('task-title'));
+// <h5 id ="task-title"> Tassk </h5>
+
+// Get things from the element
+console.log(document.getElementById('task-title').id);
+// task-title
+
+// console.log(document.getElementById('task-title'));
+
+// // Get things from the element
+// console.log(document.getElementById('task-title').id);
+// console.log(document.getElementById('task-title').className;
+
+// Change Styling
+// document.getElementById('task-title').style.background = '#333';
+// document.getElementById('task-title').style.color = '#fff';
+// document.getElementById('task-title').style.padding = '5px';
+// document.getElementById('task-title').style.display = 'none';
+
+// Change content
+// document.getElementById('task-title').textContent = 'Task List';
+// document.getElementById('task-title').innerText = 'My Tasks';
+// document.getElementById('task-title').innerHTML = '<span style ="color:red">Task List</span>';
+
+// const taskTitle = document.getElementById('task-title');
+
+// // Change styling
+// taskTitle.style.background = '#333';
+// taskTitle.style.color = '#fff';
+// taskTitle.style.padding = '5px';
+// taskTitle.style.display = 'none';
+
+// // Change content
+// taskTitle.textContent = 'Task List';
+// taskTitle.innerText = 'My Tasks';
+// taskTitle.innerHTML = '<span style="color:red">Task List</span>';
+
+// document.querySelector()
+// Much more powerful, we don't need to select it by id, we can select anything we want
+
+console.log(document.querySelector('#task-title'));
+console.log(document.querySelector('.card-title'));
+console.log(document.querySelector('h5'));
+
+document.querySelector('li').style.color = 'red';
+document.querySelector('ul li').style.color = 'blue';
+
+document.querySelector('li:last-child').style.color = 'red';
+document.querySelector('li:nth-child(3)').style.color = 'yellow';
+document.querySelector('li:nth-child(4)').textContent = 'Hello World';
+document.querySelector('li:nth-child(odd)').style.background = '#ccc';
+// querySelector는 하나에만 영향을 주기 때문에 여러개 할려면 querySelectorall() 을 사용해야함
+document.querySelector('li:nth-child(even)').style.background = '#f4f4f4';
+
+
+-----------------------------------------------------------------------------------------------------
+
+
+// // document.getElementsByClassName
+
+// const items = document.getElementsByClassName('collection-item');
+// console.log(items);
+// // [li.collection-item]
+// // 0: li.collection-tiem  ~ 4 까지 있고 length = 4
+// console.log(items[0]); // <li class="collection-item">
+// items[0].style.color = 'red';
+// items[3].textContent = 'Hello';
+
+// const listItems = document.querySelector('ul').getElementsByClassName('collection-item');
+
+// console.log(listItems);
+// // collection-item은 li에만 포함되어 있고 ul에는 포함되어 있지 않기 때문에 출력시 li에 포함된 collection-item만 출력된다
+
+// document.getElementByTagName;
+// const lis =document.getElementsByTagName('li');
+// console.log(lis);
+// console.log(lis[0]);
+// lis[0].style.color = 'red';
+// lis[3].textContent = ' Hello';
+
+// lis.reverse(); // It is an array method. It is an error because it is not a function, in order to solve it, we can conver it as 
+
+// // Convert HTML collection into array
+// lis = Array.from(lis);
+
+// // 위와 똑같은 방법
+// list.forEach(function(li, index) {
+//   console.log(li.className);
+//   li.textContent = `${index}: "Hello"`;
+// });
+
+// console.log(lis);
+
+//-----------------------------------------------------
+
+// const items = document.getElementsByClassName('collection-item');
+// console.log(items);
+// console.log(items[0]);
+// items[0].style.color = 'red';
+// items[3].textContent = 'Hello';
+
+// const listItems = document.querySelector('ul').getElementsByClassName('collection-item');
+
+// console.log(listItems);
+
+// document.getElementsByTagName
+// let lis = document.getElementsByTagName('li');
+// console.log(lis);
+// console.log(lis[0]);
+// lis[0].style.color = 'red';
+// lis[3].textContent = 'Hello';
+
+// // Conver HTML Collection into array
+// lis = Array.from(lis);
+
+// lis.reverse();
+
+// lis.forEach(function(li, index){
+//   console.log(li.className);
+//   li.textContent = `${index}: Hello`;
+// });
+
+// console.log(lis);
+
+// -------------------------------------------------------------
+
+// document.querySelectorAll
+const items = document.querySelectorAll('ul.collection li.collection-item');
+
+// convert it to an array
+items.forEach(function(item, index){
+    item.textContent = `${index}: Hello`;
+});
+
+const liOdd = document.querySelectorAll('li:nth-child(odd)');
+//
+const liEven = document.querySelectorAll('li:nth-child(even)');
+
+liOdd.forEach(function(li, index){
+  li.style.background = '#ccc'; // 0 2 4 컴퓨터는 0이 1
+});
+
+for(let i = 0; i < liEven.length; i++){
+  liEven[i].style.background = '#f4f4f4';
+}
+
+
+console.log(items);
+
+//-------------------------------------------------------------------------------------------------------
+
+
+// Traversing the DOM, which is basically up and down
+
+let val;
+
+const list = document.querySelector('ul.collection');
+const listItem = document.querySelector('li.collection-item:first-child'); //Select first one
+
+val = listItem; //첫 번째 항목만
+val = list; // 모든 항목을
+
+// Get child nodes
+val = list.childNodes; // All of the child nodes를 보여줌, text node는 line break를 의미하는 거임
+
+// <div>              [0]
+// <h1>fwfw</h1>      [1]
+// </div>    이 코드를 list.childNodes 로하면 [2] length(3) 이랑 각줄의 요소를 보여줌
+
+val = list.childNodes[0]; // #text
+val = list.childNodes[0].nodeName; // #text
+val = list.childNodes[3].nodeType; // number 3
+
+// 1 - Element
+// 2 - Attribute (deprecated)
+// 3 - Text node
+// 8 - Comment
+// 9 - Document itself
+// 10 - Doctype
+
+// ChildNode는 all different types of node를 제공하고, 반면에, children은 html collection(just element))만 제공한다.
+
+//children은 html collectio을 보여준다, no text just the element (애를 더 많이 사용함)
+
+// Get children element nodes
+val = list.children; // There are five elements in this collection
+val = list.children[1]; // give second one
+list.children[1].textContent = 'Hello'; // second one text is changed as 'Hello'
+
+// Children of children
+list.children[3].children[0].id = 'test-link';
+// add id
+val = list.children[3].children[0]; // it has link children of children element, we can access to there
+
+// First child
+val = list.firstChild; //#text //childNode라서
+val = list.firstElementChild; // first actual element like using children 
+// <li class="collection-item">...</li>
+
+// Last child
+val = list.lastChild;            
+val = list.lastElementChild;
+// <li class="collection-item">...</li>
+
+// Count child elements
+val = list.childElementCount; // 5
+// we have five children
+
+// Get parent node
+val = listItem.parentNode; // ul
+val = listItem.parentElement; // ul
+val = listItem.parentElement.parentElement; // <div class="card-action">.....</div>
+
+// Get next sibling
+val = listItem.nextSibling;
+val = listItem.nextElementSibling.nextElementSibling.previousElementSibling;
+
+// Get prev sibling
+val = listItem.previousSibling;
+val = listItem.previousElementSibling; //null because there is no previous element
+console.log(val);
+
+//sibling 이용해서 up and down 할 수 있음
+
+-----------------------------------------------------------------------------------------
+Creating Elements
+
+// Creating Element
+
+// Create element
+const li  = document.createElement('li');
+
+// Add class
+li.className = 'collection-item';
+
+// Add id
+li.id = 'new-item';
+
+// Add attribute
+li.setAttribute('title', 'New Item');
+// title ="New Item"
+
+// Create text node and append
+li.appendChild(document.createTextNode('Hello World'));
+// <li class="collection-item" id="new-item" title="New Iem">Hello World</li>
+
+// Create new link element
+const link = document.createElement('a');
+// Add classes
+link.className = 'delete-item secondary-content';
+// Add icon html
+link.innerHTML = '<i class="fa fa-remove"></i>';
+
+// Append link into li
+li.appendChild(link);
+
+// Append li as child to ul
+document.querySelector('ul.collection').appendChild(li);
+
+console.log(li);
+============================================================================================================
+
+Removing and Replacing Elements
+
+// REPLACE ELEMENT
+
+// Create Element
+const newHeading = document.createElement('h2');
+// Add id
+newHeading.id = 'task-title';
+// New text node
+newHeading.appendChild(document.createTextNode('Task List'));
+
+// Get the old heading
+const oldHeading = document.getElementById('task-title');
+//Parent
+const cardAction = document.querySelector('.card-action');
+
+// Replace
+cardAction.replaceChild(newHeading, oldHeading);
+
+// REMOVE ELEMENT
+const lis = document.querySelectorAll('li');
+const list = document.querySelector('ul');
+
+// Remove list item
+lis[0].remove();
+
+// Remove child element
+list.removeChild(lis[3]);
+
+// CLASSES & ATTR
+const firstLi = document.querySelector('li:first-child');
+const link = firstLi.children[0];
+
+let val;
+
+// Classes
+val = link.className;
+val = link.classList;
+val = link.classList[0]; //access it individually
+link.classList.add('test'); // add class
+link.classList.remove('test'); // remove class
+val = link;
+
+// Attributes
+val = link.getAttribute('href');
+val = link.setAttribute('href', 'http://google.com'); // we can set it
+link.setAttribute('title', 'Google');
+val = link.hasAttribute('title'); //check if it has an attribute
+link.setAttribute('title', 'Goolge');
+link.removeAttribute('title');
+val = link;
+
+console.log(val);
+
+----------------------------------------------------------------------------------------------------------------------
+
+
